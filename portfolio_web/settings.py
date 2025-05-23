@@ -11,7 +11,13 @@ SECRET_KEY = config('SECRET_KEY', default='django-insecure-change-me')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost').split(',')
+ALLOWED_HOSTS = [
+    '.vercel.app',
+    'rizki-hidayatul-laeli-webprofile.vercel.app',
+    'www.your-domain.com',
+    '127.0.0.1',
+    'localhost'
+]
 
 # Application definition
 INSTALLED_APPS = [
