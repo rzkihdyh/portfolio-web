@@ -10,3 +10,13 @@ python3.9 manage.py migrate --noinput
 
 echo "Collect Static..."
 python3.9 manage.py collectstatic --noinput --clear
+
+# install dependencies
+pip install -r requirements.txt
+
+# collect static files
+python3 manage.py collectstatic --noinput
+
+# copy hasil collectstatic ke staticfiles_build
+mkdir -p staticfiles_build
+cp -r staticfiles/* staticfiles_build/
