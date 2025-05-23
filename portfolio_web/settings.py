@@ -94,18 +94,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 
-# Static files configuration untuk production
-if not DEBUG:
-    # Production static files settings
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
-    STATICFILES_DIRS = [
-        BASE_DIR / 'main' / 'static',
-    ]
-else:
-    # Development static files settings
-    STATICFILES_DIRS = [
-        BASE_DIR / 'main' / 'static',
-    ]
+STATICFILES_DIRS = [BASE_DIR / 'main' / 'static']
+STATIC_ROOT = BASE_DIR / 'staticfiles_build' / 'static'
+
+# # Static files configuration untuk production
+# if not DEBUG:
+#     # Production static files settings
+#     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+#     STATICFILES_DIRS = [
+#         BASE_DIR / 'main' / 'static',
+#     ]
+# else:
+#     # Development static files settings
+#     STATICFILES_DIRS = [
+#         BASE_DIR / 'main' / 'static',
+    # ]
 
 # WhiteNoise configuration
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
