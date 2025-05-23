@@ -1,0 +1,272 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ name }} - Portfolio</title>
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">{{ name }}</a>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#awards" class="nav-link">Awards</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">{{ name }}</h1>
+                    <div class="hero-greeting">👋 Hi there!</div>
+                    <p class="hero-description">{{ description }}</p>
+                    <p class="hero-extended">{{ extended_description }}</p>
+                    
+                    <!-- Skills -->
+                    <div class="skills-container">
+                        <h3>Tech Stack</h3>
+                        <div class="skills-grid">
+                            {% for skill in skills %}
+                                <div class="skill-item">{{ skill }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <!-- Interests -->
+                    <div class="interests-container">
+                        <h3>Interests</h3>
+                        <ul class="interests-list">
+                            {% for interest in interests %}
+                                <li>{{ interest }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="hero-image">
+                    <div class="profile-image">
+                        <img src="{% if request.user.profile_image %}{{ request.user.profile_image.url }}{% else %}/media/profile/profile.jpg{% endif %}" 
+                            alt="{{ name }}" 
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <i class="fas fa-user"></i>
+                            <p>Your Photo Here</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div class="social-links">
+                        <a href="{{ social_links.linkedin }}" class="social-link" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="{{ social_links.email }}" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email me</span>
+                        </a>
+                        <a href="{{ social_links.medium }}" class="social-link" target="_blank">
+                            <i class="fab fa-medium"></i>
+                            <span>Visit my write</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Previous Projects</h2>
+            
+            <!-- Web Projects -->
+            <div class="project-category">
+                <h3 class="category-title">Web Development</h3>
+                <div class="projects-grid">
+                    {% for project in projects.web %}
+                        <div class="project-card">
+                            <h4>{{ project.name }}</h4>
+                            <p>{{ project.description }}</p>
+                            <span class="project-type">{{ project.type }}</span>
+                            <a href="{{ project.url }}" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <!-- Design Projects -->
+            <div class="project-category">
+                <h3 class="category-title">Design & Prototyping</h3>
+                <div class="projects-grid">
+                    {% for project in projects.design %}
+                        <div class="project-card">
+                            <h4>{{ project.name }}</h4>
+                            <p>{{ project.description }}</p>
+                            <span class="project-type">{{ project.type }}</span>
+                            <a href="{{ project.url }}" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <!-- Business Projects -->
+            <div class="project-category">
+                <h3 class="category-title">Business</h3>
+                <div class="projects-grid">
+                    {% for project in projects.business %}
+                        <div class="project-card">
+                            <h4>{{ project.name }}</h4>
+                            <p>{{ project.description }}</p>
+                            <span class="project-type">{{ project.type }}</span>
+                            <a href="{{ project.url }}" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <!-- IoT Projects -->
+            <div class="project-category">
+                <h3 class="category-title">IoT</h3>
+                <div class="projects-grid">
+                    {% for project in projects.iot %}
+                        <div class="project-card">
+                            <h4>{{ project.name }}</h4>
+                            <p>{{ project.description }}</p>
+                            <span class="project-type">{{ project.type }}</span>
+                            <a href="{{ project.url }}" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <!-- Social Projects -->
+            <div class="project-category">
+                <h3 class="category-title">Social Projects</h3>
+                <div class="social-projects">
+                    {% for project in social_projects %}
+                        <div class="social-project-item">{{ project }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            
+            <div class="experience-categories">
+                <div class="experience-category">
+                    <h3>High School</h3>
+                    <ul>
+                        {% for exp in experiences.high_school %}
+                            <li>{{ exp }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                
+                <div class="experience-category">
+                    <h3>University</h3>
+                    <ul>
+                        {% for exp in experiences.university %}
+                            <li>{{ exp }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                
+                <div class="experience-category">
+                    <h3>Organization</h3>
+                    <ul>
+                        {% for exp in experiences.organization %}
+                            <li>{{ exp }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section id="awards" class="awards">
+        <div class="container">
+            <h2 class="section-title">Awards & Honours</h2>
+            <div class="awards-grid">
+                {% for award in awards %}
+                    <div class="award-item">
+                        <i class="fas fa-trophy"></i>
+                        <span>{{ award }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+            
+            <!-- Languages -->
+            <div class="languages-section">
+                <h3>Languages</h3>
+                <div class="languages-grid">
+                    {% for lang, level in languages.items %}
+                        <div class="language-item">
+                            <strong>{{ lang }}</strong>
+                            <span>{{ level }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <!-- Tools -->
+            <div class="tools-section">
+                <h3>Tools & Technologies</h3>
+                <div class="tools-categories">
+                    <div class="tool-category">
+                        <h4>Languages & Frameworks</h4>
+                        <div class="tools-list">
+                            {% for tool in tools.languages_frameworks %}
+                                <span class="tool-tag">{{ tool }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <div class="tool-category">
+                        <h4>Design & Prototyping</h4>
+                        <div class="tools-list">
+                            {% for tool in tools.design_prototyping %}
+                                <span class="tool-tag">{{ tool }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <div class="tool-category">
+                        <h4>Other Skills</h4>
+                        <div class="tools-list">
+                            {% for skill in tools.other_skills %}
+                                <span class="tool-tag">{{ skill }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="{% static 'main/js/main.js' %}"></script>
+</body>
+</html>
