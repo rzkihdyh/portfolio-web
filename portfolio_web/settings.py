@@ -92,29 +92,22 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
+# Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
-# # Static files configuration untuk production
-# if not DEBUG:
-#     # Production static files settings
-#     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
-#     STATICFILES_DIRS = [
-#         BASE_DIR / 'main' / 'static',
-#     ]
-# else:
-#     # Development static files settings
-#     STATICFILES_DIRS = [
-#         BASE_DIR / 'main' / 'static',
-    # ]
+# Static files directories
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'main', 'static'),
+    # Tambahkan direktori static lainnya jika ada
+]
 
-# WhiteNoise configuration
+# WhiteNoise configuration untuk Vercel
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Media files
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
