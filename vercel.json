@@ -19,12 +19,5 @@
       "src": "/(.*)",
       "dest": "portfolio_web/wsgi.py"
     }
-  ],
-  "build": {
-    "env": {},
-    "commands": [
-      "pip install -r requirements.txt",
-      "python manage.py collectstatic --noinput"
-    ]
-  }
+  ]
 }
