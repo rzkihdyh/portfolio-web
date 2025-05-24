@@ -98,16 +98,25 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 # Static files directories
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'main', 'static'),
-    # Tambahkan direktori static lainnya jika ada
+    BASE_DIR / 'main' / 'static',
 ]
 
+if DEBUG:
+    STATIC_ROOT = BASE_DIR / 'staticfiles'
+else:
+    # Production - Vercel
+    STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 # WhiteNoise configuration untuk Vercel
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
+import mimetypes
+mimetypes.add_type("text/css", ".css", True)
+mimetypes.add_type("application/javascript", ".js", True)
 
 # Media files
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

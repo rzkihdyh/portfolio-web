@@ -3,10 +3,25 @@
   "builds": [
     {
       "src": "portfolio_web/wsgi.py",
-      "use": "@vercel/python"
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "15mb" }
     }
   ],
   "routes": [
+    {
+      "src": "/static/main/css/(.*\\.css)",
+      "headers": { "Content-Type": "text/css" },
+      "dest": "/static/main/css/$1"
+    },
+    {
+      "src": "/static/main/js/(.*\\.js)",
+      "headers": { "Content-Type": "application/javascript" },
+      "dest": "/static/main/js/$1"
+    },
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
     {
       "src": "/(.*)",
       "dest": "portfolio_web/wsgi.py"
