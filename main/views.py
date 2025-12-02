@@ -1,18 +1,17 @@
 from django.shortcuts import render
 
 def index(request):
-    # Data untuk template
     context = {
         'name': 'Rizki Hidayatul Laeli',
         'description': "I'm a passionate 4th semester Information Systems student at the Faculty of Computer Science, University of Indonesia. With a strong curiosity in finance, business intelligence, and project management, I'm constantly seeking opportunities to grow, learn, and make real impact.",
         'extended_description': "I thrive in collaborative environments, value critical thinking, and love solving problems through both data and people. Currently open to internship opportunities where I can contribute and grow alongside a dynamic team.",
         
         'social_links': {
-            'linkedin': 'https://linkedin.com/in/your-profile',  # Ganti dengan link Anda
-            'email': 'mailto:your-email@example.com',  # Ganti dengan email Anda
-            'medium': 'https://medium.com/@your-profile'  # Ganti dengan profile Medium Anda
+            'linkedin': 'https://linkedin.com/in/your-profile',
+            'email': 'mailto:your-email@example.com',
+            'medium': 'https://medium.com/@your-profile'
         },
-        
+
         'skills': ['Power BI', 'Django', 'Python', 'Java', 'Figma'],
         
         'interests': [
@@ -20,7 +19,7 @@ def index(request):
             'Business Intelligence & Data Analysis',
             'Project Management'
         ],
-        
+
         'projects': {
             'web': [
                 {
@@ -36,6 +35,7 @@ def index(request):
                     'type': 'Team Project'
                 }
             ],
+
             'design': [
                 {
                     'name': 'VitaMind',
@@ -44,6 +44,7 @@ def index(request):
                     'type': 'Figma Prototype'
                 }
             ],
+
             'business': [
                 {
                     'name': 'Parkiran - Business Plan',
@@ -52,6 +53,7 @@ def index(request):
                     'type': 'Business Plan'
                 }
             ],
+
             'iot': [
                 {
                     'name': 'Sahabat Netra',
@@ -60,6 +62,7 @@ def index(request):
                     'type': 'IoT Prototype'
                 }
             ],
+
             'bi': [
                 {
                     'name': 'Business Intelligence Project',
@@ -69,13 +72,52 @@ def index(request):
                 }
             ]
         },
-        
+
+        # ----------------------------------------------------
+        # ⭐ NEW SECTION: POWER BI
+        # ----------------------------------------------------
+        'powerbi': [
+            {
+                'name': 'Supermarket Sales Dashboard',
+                'description': 'Analyzed 1,000+ supermarket sales records to identify revenue trends, product performance, and customer insights using Power BI.',
+                'type': 'Data Analysis Dashboard',
+                'url': '#'
+            },
+            {
+                'name': 'E-Commerce Funnel Performance Dashboard',
+                'description': 'Evaluated conversion funnel performance, logistics delay factors, and top-performing categories using BI visualization.',
+                'type': 'Funnel Analysis',
+                'url': '#'
+            }
+        ],
+
+        # ----------------------------------------------------
+        # ⭐ NEW SECTION: PROJECT MANAGEMENT EXPERIENCE
+        # ----------------------------------------------------
+        'pm_experience': [
+            {
+                'title': 'Co-Project Manager — Bimbingan Belajar Binovatif',
+                'description': 'Led end-to-end mobile app development, coordinated UI/UX and development teams, created WBS, project charter, risks, and timeline.',
+                'role': 'Project Manager'
+            },
+            {
+                'title': 'Co-Project Manager — Lima Jaya Motor',
+                'description': 'Managed CMS website project, stakeholder alignment, sprint planning, documentation, and milestone monitoring.',
+                'role': 'Project Manager'
+            },
+            {
+                'title': 'Project Manager — SDS Muhammadiyah 06 Tebet',
+                'description': 'Oversaw development of school website using WordPress, handled scope management, risk control, and deliverable handover.',
+                'role': 'Project Manager'
+            }
+        ],
+
         'social_projects': [
             'Interkom 1',
             'Interkom 2',
             'JOIN'
         ],
-        
+
         'experiences': {
             'high_school': [
                 'Treasurer of Class Batch',
@@ -99,7 +141,7 @@ def index(request):
                 'FUKI UI -- Vice Head Business Professional Department'
             ]
         },
-        
+
         'awards': [
             'Top 4 -- National IgnITe Mini Case Challenge',
             'Awardee -- Beasiswa Indonesia Bangkit (LPDP x Kemenag) 2023',
@@ -107,18 +149,18 @@ def index(request):
             'Most Collaborative Project -- KIHAJAR STEM 2022 (Team)',
             'Awardee -- Ilimac Scholarship'
         ],
-        
+
         'languages': {
             'Indonesian': 'Native',
             'English': 'Professional Working Proficiency',
             'Korean': 'Elementary'
         },
-        
+
         'tools': {
             'languages_frameworks': ['Python', 'Java', 'Django'],
             'design_prototyping': ['Figma'],
             'other_skills': ['Financial management', 'Leadership', 'Project coordination']
         }
     }
-    
+
     return render(request, 'main/index.html', context)

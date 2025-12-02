@@ -483,3 +483,32 @@ body {
     transform: scale(1.05);
     box-shadow: 0 15px 40px rgba(139, 92, 246, 0.4);
 }
+
+.section-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+}
+
+.section-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.nav-scrolled {
+    background: rgba(10, 10, 10, 0.98);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.4);
+    transition: all 0.3s ease;
+}
+
+.project-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.skill-item {
+    transition: all 0.25s ease;
+}
+
+.project-card {
+    transition: transform 0.25s ease-out;
+}
