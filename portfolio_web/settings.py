@@ -16,7 +16,9 @@ ALLOWED_HOSTS = [
     'rizki-hidayatul-laeli-webprofile.vercel.app',
     'www.your-domain.com',
     '127.0.0.1',
-    'localhost'
+    'localhost',
+    'www.rizkilaeli.id',
+    'rizkilaeli.id'
 ]
 
 # Application definition
